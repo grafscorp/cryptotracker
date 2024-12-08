@@ -18,11 +18,18 @@ class CoinChart extends StatelessWidget {
   ChartData getChartData() {
     ChartData chartData = ChartData(
       dataRows: const [
-        [10.0, 21.0, 12.0]
+        [10.0, 21.0, 12.0, 5.0, 16.0]
       ],
       chartOptions: const ChartOptions.noLabels(),
-      xUserLabels: const ['Monday', 'SAS', 'wendsay'],
-      dataRowsLegends: const ['Coins Change Week'],
+      xUserLabels: const [
+        '5HoursAgo',
+        '4HoursAgo',
+        '3HoursAgo',
+        '2HoursAgo',
+        'HourAgo'
+      ],
+      dataRowsLegends: const ['Coins Change 5 hours'],
+      dataRowsColors: const [Colors.orange],
     );
 
     return chartData;
