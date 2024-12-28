@@ -3,4 +3,5 @@
 Приложение разработано на фреймворке Flutter
 
 
- ![Screenshot_1733682639](https://github.com/user-attachments/assets/7576a56c-c278-4e86-bab7-3876f6d60ddc)
+ 
+![Screenshot_1735379562](https://github.com/user-attachments/assets/08c9f861-30d2-4713-875c-05d4410be41d)
