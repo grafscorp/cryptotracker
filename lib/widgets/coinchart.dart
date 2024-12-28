@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_charts/flutter_charts.dart';
 
@@ -6,19 +8,36 @@ class CoinChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LineChart(
-      painter: LineChartPainter(
-        lineChartContainer: LineChartTopContainer(
-          chartData: getChartData(),
-        ),
-      ),
-    );
+    // return LineChart(
+    //   painter: LineChartPainter(
+    //     lineChartContainer: LineChartTopContainer(
+    //       chartData: getVerticalBarChart(getChartData()),
+    //     ),
+    //   ),
+    // );
+    return getVerticalBarChart(getChartData());
   }
 
   ChartData getChartData() {
+    //TEST VALUE CHARTS
+    var rnd = Random();
+
     ChartData chartData = ChartData(
-      dataRows: const [
-        [10.0, 21.0, 12.0, 5.0, 16.0]
+      dataRows: [
+        [
+          rnd.nextDouble() * 500,
+          rnd.nextDouble() * 500,
+          rnd.nextDouble() * 500,
+          rnd.nextDouble() * 500,
+          rnd.nextDouble() * 500
+        ],
+        [
+          -rnd.nextDouble() * 500,
+          -rnd.nextDouble() * 500,
+          -rnd.nextDouble() * 500,
+          -rnd.nextDouble() * 500,
+          -rnd.nextDouble() * 500
+        ],
       ],
       chartOptions: const ChartOptions.noLabels(),
       xUserLabels: const [
@@ -28,10 +47,25 @@ class CoinChart extends StatelessWidget {
         '2HoursAgo',
         'HourAgo'
       ],
-      dataRowsLegends: const ['Coins Change 5 hours'],
-      dataRowsColors: const [Colors.orange],
+      dataRowsLegends: const [
+        'Lower zero',
+        "Greater zero",
+      ],
+      dataRowsColors: const [
+        Colors.green,
+        Colors.red,
+      ],
     );
-
     return chartData;
+  }
+
+  VerticalBarChart getVerticalBarChart(ChartData chartData) {
+    var verticalBarChartContainer =
+        VerticalBarChartTopContainer(chartData: chartData);
+    var verticalBarChart = VerticalBarChart(
+      painter: VerticalBarChartPainter(
+          verticalBarChartContainer: verticalBarChartContainer),
+    );
+    return verticalBarChart;
   }
 }
